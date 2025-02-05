@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contador Romântico</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f7f7f7;
+            color: #333;
+            text-align: center;
+            padding-top: 50px;
+        }
+        h1 {
+            color: #FF6347;
+        }
+        .contador {
+            font-size: 2em;
+            margin-top: 20px;
+            color: #2E8B57;
+        }
+        .mensagem {
+            font-size: 1.2em;
+            margin-top: 30px;
+            color: #8B008B;
+        }
+    </style>
+</head>
+<body>
+    <h1>Contagem do Amor</h1>
+    <div id="contador" class="contador"></div>
+    <div class="mensagem">
+        <p>O nosso amor é eterno, cada dia que passa é mais forte. Que venham mais momentos juntos, sempre com muito carinho e alegria.</p>
+    </div>
+
+    <script>
+        // Data de início
+        const dataInicio = new Date('January 18, 2025 22:49:00').getTime();
+
+        // Função para calcular o tempo
+        function atualizarContador() {
+            const agora = new Date().getTime();
+            const diferenca = agora - dataInicio;
+
+            // Calculando anos, meses, dias, horas e segundos
+            const anos = Math.floor(diferenca / (1000 * 60 * 60 * 24 * 365));
+            const meses = Math.floor((diferenca % (1000 * 60 * 60 * 24 * 365)) / (1000 * 60 * 60 * 24 * 30));
+            const dias = Math.floor((diferenca % (1000 * 60 * 60 * 24 * 30)) / (1000 * 60 * 60 * 24));
+            const horas = Math.floor((diferenca % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutos = Math.floor((diferenca % (1000 * 60 * 60)) / (1000 * 60));
+            const segundos = Math.floor((diferenca % (1000 * 60)) / 1000);
+
+            // Atualizando o HTML com o contador
+            document.getElementById("contador").innerHTML = 
+                `${anos} anos, ${meses} meses, ${dias} dias, ${horas} horas, ${minutos} minutos, ${segundos} segundos`;
+        }
+
+        // Atualizando a cada segundo
+        setInterval(atualizarContador, 1000);
+        atualizarContador(); // Inicializa imediatamente
+    </script>
+</body>
+</html>
